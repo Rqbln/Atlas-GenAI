@@ -11,12 +11,10 @@ const DashboardLayout: React.FC = () => {
 
   return (
     <Layout className={styles.dashboardLayout}>
-      {/* Sidebar fixe */}
       <Sider className={styles.sider} width={400}>
         <Sidebar setCurrentContent={setCurrentContent} />
       </Sider>
 
-      {/* Content box qui prend le reste */}
       <Layout className={styles.mainLayout}>
         <Content className={styles.content}>
           <ContentArea currentContent={currentContent} />

@@ -19,7 +19,6 @@ const Sidebar: React.FC<SidebarProps> = () => {
 
   return (
     <div className={styles.sidebar}>
-      {/* Header */}
       <div className={styles.header}>
         <div className={styles.logo}>DeepAtlas</div>
         <button className={styles.chatButton}>

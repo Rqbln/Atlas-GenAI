@@ -2,12 +2,7 @@ import React, { useState } from "react";
 import Chat from "./Chat";
 import ChatInput from "./ChatInput";
 import styles from "./ChatContainer.module.css";
-
-interface Message {
-  id: number;
-  sender: "user" | "ai";
-  content: string;
-}
+import { Message } from "@interfaces/Message";
 
 const ChatContainer: React.FC = () => {
   const [messages, setMessages] = useState<Message[]>([
