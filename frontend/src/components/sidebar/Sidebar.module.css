@@ -1,0 +1,63 @@
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background: #212327;
+  color: white;
+  padding: 0 16px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+  padding: 16px 0;
+}
+
+.logo {
+  font-size: 28px;
+  font-family: "ABeeZee", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.chatButton {
+  border: none;
+  color: white;
+  background: #4d6bfe;
+  height: 44px;
+  border-radius: 14px;
+  flex-shrink: 0;
+  align-items: center;
+  width: fit-content;
+  padding: 0px 12px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  cursor: pointer;
+  display: flex;
+  overflow: hidden;
+  transition: background 0.3s;
+}
+
+.chatButton:hover {
+  background: #4d6ba8;
+}
+
+.chatIcon {
+  margin-right: 10px;
+}
+
+.contentWrapper {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Footer */
+.content {
+  height: 90%;
+  background-color: red;
+}

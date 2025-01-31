@@ -1,0 +1,16 @@
+.chatContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+
+.chatMessages {
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+.chatInput {
+  flex-shrink: 0;
+  padding-bottom: 16px;
+}

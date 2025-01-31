@@ -1,0 +1,44 @@
+.chat {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.message {
+  margin: 8px;
+  padding: 8px;
+  border-radius: 8px;
+  max-width: 70%;
+}
+
+.userMessage {
+  align-self: flex-end;
+  background-color: #4d6bfe;
+  color: white;
+}
+
+.aiMessage {
+  align-self: flex-start;
+  background-color: #e0e0e0;
+  color: black;
+}
+
+.typingIndicator {
+  align-self: flex-start;
+  margin: 8px;
+  padding: 8px;
+  background-color: #e0e0e0;
+  border-radius: 8px;
+  color: black;
+}
+
+/* scrollbar */
+.chat {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.6) transparent;
+}
+
+.chat:hover {
+  scrollbar-color: rgba(255, 255, 255, 0.6) transparent;
+}

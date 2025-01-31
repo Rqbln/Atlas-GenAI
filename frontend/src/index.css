@@ -1,0 +1,88 @@
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&display=swap');
+
+/* E0C463, 1E666E et 575858 de la charte graphique initial ne sont pas là */
+:root {
+  /* Primary Colors */
+  --primary-color: #19666d; /* Caribbean Current-30 | sur la charte graphique de base c'est 1E666E donc faut voir */
+  --primary-hover: #2fa2ae; /* Lighter accent for interactions */
+
+  /* Secondary Colors */
+  --secondary-color: #dfa126; /* Harvest Gold-60 */
+  --secondary-hover: #e0a100; /* Accent variation for hover */
+
+  /* Neutral Base Colors */
+  --black: #000000;
+  --white: #ffffff;
+
+  /* Gray Neutral Colors */
+  --gray-10: #1a1a1a;
+  --gray-13: #212121; /* Main text */
+  --gray-20: #292929;
+  --gray-30: #424242; /* Secondary text */
+  --gray-40: #5c5c5c;
+  --gray-50: #757575;
+  --gray-60: #8f8f8f;
+  --gray-70: #a8a8a8;
+  --gray-80: #c2c2c2;
+  --gray-90: #dbdbdb;
+  --gray-93: #ededed;
+  --gray-95: #f2f2f2;
+  --gray-96: #e6e6e6;
+
+  /* Background Colors */
+  --primary-background: var(--gray-96);
+  --secondary-background: #cee2e3;
+
+  /* Gradient Colors */
+  /* --gradient-color: linear-gradient(90deg, #19666D, #2FA2AE); */
+
+  /* Text Colors */
+  --text-color: var(--gray-13); /* Default text color */
+  --secondary-text-color: var(--gray-30); /* Subtext or muted content */
+  --placeholder-text: var(--gray-50); /* Input placeholder text */
+
+  /* Border Radius */
+  /* --border-radius: 4px;
+  --border-radius-lg: 8px; */
+
+  /* Spacing */
+  /* --spacing-small: 8px;
+  --spacing-medium: 16px;
+  --spacing-large: 24px; */
+
+  /* Transitions */
+  /* --transition-fast: 0.2s ease-in-out;
+  --transition-medium: 0.3s ease-in-out; */
+
+  /* Fonts */
+  /* --font-family: 'Inter', sans-serif;
+  --font-weight-regular: 400;
+  --font-weight-bold: 700; */
+
+  /* Breakpoints */
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1200px;
+}
+
+body {
+  margin: 0;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  font-optical-sizing: auto;
+  color: var(--text-color);
+  background-color: var(--secondary-background);
+}
+
+/* code { C'est quoi code ?
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-optical-sizing: auto
+} */
+
+.ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
+  background: rgba(32, 141, 214, 0.151);
+  color: rgb(41, 95, 131);
+}

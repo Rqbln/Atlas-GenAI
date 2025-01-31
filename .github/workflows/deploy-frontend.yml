@@ -1,0 +1,38 @@
+name: deploy to AWS
+on:
+  push:
+    branches:
+      - prod
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      - name: Set branch name
+        run: echo "BRANCH_NAME=${GITHUB_REF#refs/heads/}" >> $GITHUB_ENV
+
+      - name: set API URL
+        run: node editApiUrl.js
+        working-directory: ./frontend/config
+        env:
+          STAGE: ${{ env.BRANCH_NAME }}
+
+      - name: Build docker image
+        run: docker build -t webapp-atlas-front -f Dockerfile .
+
+      - name: Deploy to AWS
+        run: |
+          docker run --rm \
+          -e STAGE=${BRANCH_NAME} \
+          -e AWS_DEFAULT_REGION="${{ secrets.AWS_DEFAULT_REGION }}" \
+          -e AWS_ACCESS_KEY_ID="${{ secrets.AWS_ACCESS_KEY_ID }}" \
+          -e AWS_SECRET_ACCESS_KEY="${{ secrets.AWS_SECRET_ACCESS_KEY }}" \
+          webapp-atlas-front

@@ -1,0 +1,68 @@
+{
+  "name": "atlas-front-webapp",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "lint:check": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format:check": "prettier --check '**/*.{js,jsx,ts,tsx,json,html,css,md}'",
+    "format:fix": "prettier --write '**/*.{js,jsx,ts,tsx,json,html,css,md}'",
+    "typescript:check": "tsc -b",
+    "test:all": "npm run typescript:check && npm run format:check && npm run lint:check",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.json": [
+      "npm run format:fix"
+    ],
+    "app/**/*.{ts,tsx,js, jsx,css,scss}": [
+      "npm run test:all"
+    ]
+  },
+  "dependencies": {
+    "@ant-design/icons": "^5.5.2",
+    "@types/leaflet": "^1.9.16",
+    "antd": "^5.19.3",
+    "leaflet": "^1.9.4",
+    "prettier": "^3.3.3",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.25.1",
+    "serverless-s3-sync": "^3.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.7.4",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@typescript-eslint/eslint-plugin": "^7.17.0",
+    "@typescript-eslint/parser": "^7.17.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "eslint": "^8.56.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-import-resolver-typescript": "^3.6.1",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-prettier": "^5.2.1",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "husky": "^9.1.6",
+    "lint-staged": "^15.2.10",
+    "prettier": "^3.3.3",
+    "serverless": "^3.38.0",
+    "serverless-cloudfront-invalidate": "^1.12.2",
+    "serverless-finch": "^4.0.4",
+    "typescript": "^5.2.2",
+    "vite": "^5.3.1",
+    "vite-plugin-svgr": "^4.2.0"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  }
+}

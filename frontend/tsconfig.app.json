@@ -1,0 +1,40 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "allowImportingTsExtensions": true,
+    "jsx": "react-jsx",
+
+    "baseUrl": "./src",
+    "paths": {
+      "@images/*": ["assets/images/*"],
+      "@icon": ["components/Icon.tsx"],
+      "@icons/*": ["assets/icons/*"],
+      "@components/*": ["components/*"],
+      "@enums/*": ["enums/*"],
+      "@api/*": ["services/api/*"],
+      "@services/*": ["services/*"],
+      "@contexts/*": ["contexts/*"],
+      "@utils/*": ["utils/*"],
+      "@interfaces/*": ["interfaces/*"],
+      "@software/*": ["views/software/*"],
+      "@views/*": ["views/*"],
+      "@hooks/*": ["hooks/*"],
+      "@config/*": ["config/*"],
+      "@routes/*": ["routes/*"]
+    }
+  },
+  "include": ["src", "src/vite-env.d.ts"]
+}

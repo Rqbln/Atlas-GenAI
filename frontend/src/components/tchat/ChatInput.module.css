@@ -1,0 +1,88 @@
+.chatInput {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  background: #404045;
+  border-radius: 24px;
+  padding: 16px;
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 120px; /* Hauteur minimale de la boîte */
+}
+
+/* Style pour le textarea */
+.input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 16px;
+  font-family: inherit; /* Utilise la police du site */
+  padding: 8px;
+  outline: none;
+  align-self: flex-start;
+  resize: none; /* Empêche le redimensionnement manuel */
+  overflow-y: auto; /* Ajoute une scrollbar si nécessaire */
+  max-height: 300px; /* Hauteur maximale */
+  min-height: 44px; /* Hauteur minimale (équivalent à une ligne) */
+  line-height: 1.5; /* Espacement des lignes */
+  transition: height 0.2s ease-out; /* Animation fluide */
+}
+
+.input::placeholder {
+  color: rgba(153, 154, 164);
+  font-family: inherit; /* Utilise la police du site */
+}
+
+/* scrollbar */
+.input {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.6) transparent;
+}
+
+.input:hover {
+  scrollbar-color: rgba(255, 255, 255, 0.6) transparent;
+}
+
+/* Bouton d'envoi */
+.sendButton {
+  background: #4d6bfe;
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s;
+  margin-top: 8px; /* Espacement entre le textarea et le bouton */
+}
+
+.sendButton:disabled {
+  background: #717179;
+  cursor: not-allowed;
+}
+
+.sendIconActive {
+  color: white;
+}
+
+.sendIconDisabled {
+  color: #bbb;
+}
+
+.loadingIcon {
+  color: #bbb;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
