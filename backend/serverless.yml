@@ -26,9 +26,9 @@ functions:
           method: ANY
           cors: true
 
-plugins:
-  - serverless-offline
+# plugins:
+#   - serverless-offline
 
-custom:
-  serverless-offline:
-    httpPort: 3000
+# custom:
+#   serverless-offline:
+#     httpPort: 3000
