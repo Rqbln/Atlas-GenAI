@@ -9,9 +9,9 @@ provider:
   region: ${env:AWS_DEFAULT_REGION, 'eu-west-3'}
   environment:
     NODE_ENV: lambda
-    DATABASE_URL: ${env:DATABASE_URL}
-    JWT_SECRET: ${env:JWT_SECRET}
-    API_BASE_URL: ${env:API_BASE_URL}
+    DATABASE_URL: ${env:BACKEND_DATABASE_URL}
+    JWT_SECRET: ${env:BACKEND_JWT_SECRET}
+    API_BASE_URL: ${env:BACKEND_API_BASE_URL}
 
 functions:
   app:
