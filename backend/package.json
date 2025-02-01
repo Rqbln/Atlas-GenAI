@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "app/app.ts",
   "scripts": {
+    "build": "tsc --build tsconfig.json",
     "lint:check": "eslint .",
     "lint:fix": "eslint . --fix",
     "format:check": "prettier --check '**/*.{js,jsx,ts,tsx,json,html,css,md}'",
