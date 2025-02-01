@@ -6,6 +6,7 @@ WORKDIR /app
 COPY package*.json ./
 COPY tsconfig*.json ./
 COPY prisma ./prisma
+COPY serverless.yml ./
 
 # Installer les dépendances
 RUN npm install
@@ -28,6 +29,7 @@ COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/package*.json ./
 COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/prisma ./prisma
+COPY --from=builder /app/serverless.yml ./
 
 # Installer serverless globalement
 RUN npm install -g serverless

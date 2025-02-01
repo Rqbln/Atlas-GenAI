@@ -32,10 +32,15 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
 
-      - name: Setup branch name
-        run: echo "BRANCH_NAME=${GITHUB_REF#refs/heads/}" >> $GITHUB_ENV
+      - name: Install dependencies
+        run: npm install
+        working-directory: ./backend
 
       - name: Build the project
+        run: npm run build
+        working-directory: ./backend
+
+      - name: Build Docker image
         run: docker build -t webapp-atlas-back -f ./backend/Dockerfile ./backend
 
       - name: Deploy the project
