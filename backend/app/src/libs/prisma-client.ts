@@ -2,7 +2,7 @@ import { PrismaClient } from '@prisma/client';
 
 export const prismaInstance = new PrismaClient({ errorFormat: 'pretty' });
 
-prismaInstance.$use(async (params, next) => {
+prismaInstance.$use(async (params: any, next: any) => {
   const startTime = Date.now();
 
   try {
