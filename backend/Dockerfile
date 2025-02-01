@@ -32,7 +32,7 @@ COPY --from=builder /app/prisma ./prisma
 COPY --from=builder /app/serverless.yml ./
 
 # Installer serverless globalement
-RUN npm install -g serverless
+RUN npm install -g serverless@3
 
 # Exposer le port 3000
 EXPOSE 3000
