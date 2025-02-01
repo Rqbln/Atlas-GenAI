@@ -15,6 +15,8 @@
     "prisma:seed": "ts-node prisma/seed.ts"
   },
   "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.738.0",
+    "@aws-sdk/lib-dynamodb": "^3.738.0",
     "@faker-js/faker": "^9.2.0",
     "@fastify/cors": "^10.0.1",
     "@fastify/helmet": "^12.0.1",
@@ -24,8 +26,10 @@
     "@prisma/client": "^5.22.0",
     "ajv": "^8.17.1",
     "ajv-formats": "^3.0.1",
+    "aws4": "^1.13.2",
+    "axios": "^1.7.9",
     "bcrypt": "^5.1.1",
-    "dotenv": "^16.4.5",
+    "dotenv": "^16.4.7",
     "fastify": "^5.0.0",
     "jolt-server": "file:",
     "json-schema-to-ts": "^3.1.1",
