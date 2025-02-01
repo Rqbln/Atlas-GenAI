@@ -15,7 +15,7 @@ provider:
 
 functions:
   app:
-    handler: app/app.handler
+    handler: app/lambda.handler
     events:
       - http:
           path: /

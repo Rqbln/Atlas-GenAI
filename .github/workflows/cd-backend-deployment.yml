@@ -36,7 +36,7 @@ jobs:
         run: echo "BRANCH_NAME=${GITHUB_REF#refs/heads/}" >> $GITHUB_ENV
 
       - name: Build the project
-        run: docker build -t webapp-atlas-back -f ./backend/Dockerfile .
+        run: docker build -t webapp-atlas-back -f ./backend/Dockerfile ./backend
 
       - name: Deploy the project
         run: |
