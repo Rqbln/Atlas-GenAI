@@ -10,8 +10,8 @@ provider:
   environment:
     NODE_ENV: lambda
     # DATABASE_URL: ${env:BACKEND_DATABASE_URL}
-    JWT_SECRET: ${env:BACKEND_JWT_SECRET}
-    API_BASE_URL: ${env:BACKEND_API_BASE_URL}
+    JWT_SECRET: 6jrBxoDPKNjCorBAzg0_olj5GeZOJcKOnFxNgoTKAlU
+    API_BASE_URL: api-test
 
 functions:
   app:
