@@ -1,0 +1,50 @@
+name: CD / Backend deployment
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - CICD_backend
+  workflow_run:
+      workflows: ["CI / Registre"]
+      types:
+        - completed
+      branches:
+        - CICD_backend
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '22'
+
+      - name: Cache npm dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Setup branch name
+        run: echo "BRANCH_NAME=${GITHUB_REF#refs/heads/}" >> $GITHUB_ENV
+
+      - name: Build the project
+        run: docker build -t webapp-atlas-back -f ./backend/Dockerfile .
+
+      - name: Deploy the project
+        run: |
+          docker run --rm \
+          -e STAGE=${BRANCH_NAME} \
+          -e AWS_DEFAULT_REGION="${{ secrets.BACKEND_AWS_DEFAULT_REGION }}" \
+          -e AWS_ACCESS_KEY_ID="${{ secrets.BACKEND_AWS_ACCESS_KEY_ID }}" \
+          -e AWS_SECRET_ACCESS_KEY="${{ secrets.BACKEND_AWS_SECRET_ACCESS_KEY }}" \
+          -e JWT_SECRET="${{ secrets.BACKEND_JWT_SECRET }}" \
+          -e API_BASE_URL="${{ secrets.BACKEND_API_BASE_URL }}" \
+          webapp-atlas-back
