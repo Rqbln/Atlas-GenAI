@@ -1,3 +1,4 @@
+import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 
 import fastify from 'fastify';
@@ -14,11 +15,13 @@ import { setupHelmet } from '@config/helmet';
 import { setupDecorators } from '@config/decorators/setupDecorators';
 import { setupCors } from '@config/cors';
 
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 dotenv.config({ path: path.resolve(__dirname, './env/.env') });
 
 export const ffy = fastify({ logger: true });
 
 export const setupServer = async (): Promise<void> => {
+  console.log('setupServer', __dirname);
   // decorators
   setupDecorators(ffy);
 
@@ -29,7 +32,7 @@ export const setupServer = async (): Promise<void> => {
 
   // swagger
   setupSwagger(ffy);
-  
+
   // routes
   ffy.register(apiRoutes);
 

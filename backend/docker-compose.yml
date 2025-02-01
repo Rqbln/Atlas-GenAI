@@ -29,7 +29,6 @@ services:
       backend:
         ipv4_address: ${API_IP}
     volumes:
-      - ./prisma:/prisma
       - ./app:/app/app
 
 volumes:

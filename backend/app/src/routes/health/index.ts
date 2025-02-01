@@ -5,7 +5,7 @@ import handler from './handler';
 const Health = async (app: FastifyInstance): Promise<void> => {
   app.route({
     method: 'GET',
-    url: '',
+    url: '/health',
     schema: {
       tags: ['Health'],
       description: 'Health check',

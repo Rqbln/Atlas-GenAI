@@ -8,6 +8,6 @@
     "module": "NodeNext",
     "moduleResolution": "NodeNext"
   },
-  "include": ["app/**/*.ts"],
+  "include": ["app/**/*.ts", "handler.ts"],
   "exclude": ["dist", "node_modules"]
 }

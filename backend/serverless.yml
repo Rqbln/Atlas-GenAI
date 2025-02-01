@@ -1,34 +1,21 @@
-service: fastify-backend
-
-frameworkVersion: '3'
+service: fastify-aws-serverless
 
 provider:
   name: aws
   runtime: nodejs18.x
-  stage: ${env:STAGE, 'prod'}
-  region: ${env:AWS_DEFAULT_REGION, 'eu-west-3'}
+  region: us-east-1
   environment:
-    NODE_ENV: lambda
-    # DATABASE_URL: ${env:BACKEND_DATABASE_URL}
-    JWT_SECRET: 6jrBxoDPKNjCorBAzg0_olj5GeZOJcKOnFxNgoTKAlU
-    API_BASE_URL: api-test
+    NODE_ENV: production
 
 functions:
   app:
-    handler: app/lambda.handler
+    handler: handler.handler
     events:
       - http:
-          path: /
-          method: ANY
+          path: /health
+          method: GET
           cors: true
       - http:
           path: /{proxy+}
           method: ANY
           cors: true
-
-# plugins:
-#   - serverless-offline
-
-# custom:
-#   serverless-offline:
-#     httpPort: 3000
