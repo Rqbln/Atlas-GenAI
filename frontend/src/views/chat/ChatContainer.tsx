@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { Button, message } from "antd";
+import { Button, message as antMessage } from "antd";
 import styles from "./ChatContainer.module.css";
 import { Message } from "@interfaces/Message";
 import Chat from "@components/tchat/Chat";
@@ -37,17 +37,17 @@ const ChatContainer: React.FC = () => {
   useEffect(() => {
     if (chatId) {
       ApiFct.getMessages(chatId)
-        .then((chat) => {
-          setMessages(chat.chat.messages);
-        })
-        .catch((error) => {
-          console.error(error);
-          setMessages([]);
-        });
+          .then((chat) => {
+            setMessages(chat.chat.messages);
+          })
+          .catch((error) => {
+            console.error(error);
+            setMessages([]);
+          });
     } else {
       setMessages([]);
     }
-  }, []);
+  }, [chatId]);
 
   useEffect(() => {
     if (!chatId) setMessages([]);
@@ -80,8 +80,8 @@ const ChatContainer: React.FC = () => {
     }
 
     if (attempts < 1) {
-      message.error(
-        "Le délai de réponse de l'IA a été dépassé. Veuillez réessayer."
+      antMessage.error(
+          "Le délai de réponse de l'IA a été dépassé. Veuillez réessayer."
       );
       navigate(APP_ROUTES.PUBLIC.HOME);
     }
@@ -102,14 +102,13 @@ const ChatContainer: React.FC = () => {
     };
 
     setMessages((prev) => [...prev, aiMessage]);
-    // modif map
     setIsTyping(false);
   };
 
   const handleNewChat = async (message: string) => {
-    const chatId = uuidv4();
-    navigate(`/c/${chatId}`);
-    await ApiFct.generateChat(chatId, message);
+    const newChatId = uuidv4();
+    navigate(`/c/${newChatId}`);
+    await ApiFct.generateChat(newChatId, message);
   };
 
   const handleNewMessage = async (chatId: string, message: string) => {
@@ -131,32 +130,33 @@ const ChatContainer: React.FC = () => {
     if (!chatId) handleNewChat(message);
     else handleNewMessage(chatId, message);
 
+    // Si vous préférez utiliser le polling réel, décommentez la ligne suivante :
     // await pollingResponse();
     await fakePollingResponse();
   };
 
   return (
-    <div className={styles.chatContainer}>
-      <div className={styles.chatMessages}>
-        <Chat messages={messages} isTyping={isTyping} />
-      </div>
-      {!chatId && messages.length === 0 && (
-        <div className={styles.suggestions}>
-          {suggestions.map((question, index) => (
-            <Button
-              key={index}
-              className={styles.suggestionButton}
-              onClick={() => handleSendMessage(question)}
-            >
-              {question}
-            </Button>
-          ))}
+      <div className={styles.chatContainer}>
+        <div className={styles.chatMessages}>
+          <Chat messages={messages} isTyping={isTyping} />
         </div>
-      )}
-      <div className={styles.chatInput}>
-        <ChatInput onSendMessage={handleSendMessage} isLoading={isTyping} />
+        {!chatId && messages.length === 0 && (
+            <div className={styles.suggestions}>
+              {suggestions.map((question, index) => (
+                  <Button
+                      key={index}
+                      className={styles.suggestionButton}
+                      onClick={() => handleSendMessage(question)}
+                  >
+                    {question}
+                  </Button>
+              ))}
+            </div>
+        )}
+        <div className={styles.chatInput}>
+          <ChatInput onSendMessage={handleSendMessage} isLoading={isTyping} />
+        </div>
       </div>
-    </div>
   );
 };
 

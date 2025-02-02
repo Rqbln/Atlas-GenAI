@@ -52,3 +52,7 @@
   flex-shrink: 0;
   padding: 16px;
 }
+
+.message {
+  white-space: pre-wrap;
+}

@@ -17,20 +17,25 @@ const Chat: React.FC<ChatProps> = ({ messages, isTyping }) => {
   }, [messages, isTyping]);
 
   return (
-    <div className={styles.chat}>
-      {messages.map((message) => (
-        <div
-          key={message.timestamp}
-          className={`${styles.message} ${
-            message.role === "user" ? styles.userMessage : styles.aiMessage
-          }`}
-        >
-          {message.text}
-        </div>
-      ))}
-      {isTyping && <div className={styles.typingIndicator}>Typing...</div>}
-      <div ref={chatRef} />
-    </div>
+      <div className={styles.chat}>
+        {messages.map((message) => (
+            <div
+                key={message.timestamp}
+                className={`${styles.message} ${
+                    message.role === "user" ? styles.userMessage : styles.aiMessage
+                }`}
+            >
+              {message.text.split('\n').map((line, index) => (
+                  <React.Fragment key={index}>
+                    {line}
+                    <br />
+                  </React.Fragment>
+              ))}
+            </div>
+        ))}
+        {isTyping && <div className={styles.typingIndicator}>Typing...</div>}
+        <div ref={chatRef} />
+      </div>
   );
 };
 
